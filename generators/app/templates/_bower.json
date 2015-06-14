@@ -1,0 +1,9 @@
+{
+  "name": "<%= project.replace(' ', '-') %>",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap-sass": "~3.3.4",
+    "font-awesome": "~4.3.0"
+  }
+}
+
