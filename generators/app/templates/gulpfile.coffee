@@ -24,23 +24,18 @@ cssbanner = """
  Version: <%= p.version %>
  License: GNU General Public License v2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
- Text Domain: rst
+ Text Domain:
  Tags:
 
- This theme, like WordPress, is licensed under the GPL.
- Use it to make something cool, have fun, and share what you\ve learned with others.
-
- Resetting and rebuilding styles have been helped along thanks to the fine work of
- Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
- along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
- and Blueprint http://www.blueprintcss.org/
  */
 """
 
 
+# scripts
 g.task 'scripts', ->
   g.src 'assets/scripts/'
-    .pipe $.plumber()
+    .pipe $.plumber
+      errorHandler: $.notify.onError("Script: <%= error %>")
     .pipe $.webpack require './webpack.config.coffee'
     .pipe g.dest 'public/scripts'
     .pipe $.sourcemaps.init
@@ -62,9 +57,12 @@ g.task 'scripts:build', ->
     .pipe $.rename suffix: '.min'
     .pipe g.dest 'public/scripts'
 
+
+# styles
 g.task 'styles', ->
   g.src 'assets/styles/*.scss'
-    .pipe $.plumber()
+    .pipe $.plumber
+      errorHandler: $.notify.onError("styles: <%= error %>")
     .pipe $.sourcemaps.init()
     .pipe $.sass(
       outputStyle: 'expanded',
@@ -102,6 +100,23 @@ g.task 'styles:build', ->
     .pipe $.rename suffix: '.min'
     .pipe g.dest 'public/styles'
 
+# lint
+g.task 'lint', [
+  'lint:coffee'
+  'lint:scss'
+  ]
+
+g.task 'lint:coffee', ->
+  g.src 'assets/scripts/**/*.coffee'
+    .pipe $.coffeelint()
+    .pipe $.coffeelint.reporter()
+
+g.task 'lint:scss', ->
+  g.src 'assets/styles/**/*.scss'
+    .pipe $.scssLint( config: 'scss-lint.yml' )
+
+
+# copy files
 g.task 'copy', [
     'copy:icons'
   ]

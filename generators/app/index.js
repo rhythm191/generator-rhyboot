@@ -62,6 +62,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('webpack.config.coffee'),
         this.destinationPath('webpack.config.coffee')
       );
+      this.fs.copy(
+        this.templatePath('scss-lint.yml'),
+        this.destinationPath('scss-lint.yml')
+      );
     },
 
     contentfiles: function() {

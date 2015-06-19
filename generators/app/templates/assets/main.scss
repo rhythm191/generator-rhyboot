@@ -1,40 +1,40 @@
 // main styles
-@charset "utf-8";
+@charset 'utf-8';
 
 // ==========================================================================
 // Bootstrap
 // ==========================================================================
 
 // custom variables
-@import "_custome-bootstrap-variables";
-@import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
-@import "bootstrap-sass/assets/stylesheets/bootstrap";
+@import 'custom-bootstrap-variables';
+@import 'bootstrap-sass/assets/stylesheets/bootstrap-sprockets';
+@import 'bootstrap-sass/assets/stylesheets/bootstrap';
 
 // font-awesome
-@import "bower_components/font-awesome/scss/font-awesome.scss";
+@import 'bower_components/font-awesome/scss/font-awesome';
 
 // ==========================================================================
 // Layout
 // ==========================================================================
 
-// @import "layout/_header";
+// @import 'layout/header';
 
 
 // ==========================================================================
 // Component
 // ==========================================================================
 
-// @import "object/component/_button";
+// @import 'object/component/button';
 
 
 // ==========================================================================
 // Project
 // ==========================================================================
 
-// @import "object/project/_articles";
+// @import 'object/project/articles';
 
 // ==========================================================================
 // Utility
 // ==========================================================================
 
-// @import "object/utility/_align";
+// @import 'object/utility/align';
