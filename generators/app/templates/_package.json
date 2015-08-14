@@ -11,6 +11,7 @@
     "gulp-coffeelint": "^0.5.0",
     "gulp-copy": "0.0.2",
     "gulp-header": "^1.2.2",
+    "gulp-imagemin": "^2.3.0",
     "gulp-json-editor": "^2.2.1",
     "gulp-load-plugins": "^0.10.0",
     "gulp-notify": "^2.2.0",
@@ -20,8 +21,15 @@
     "gulp-sass": "^2.0.1",
     "gulp-scss-lint": "^0.2.0",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-styledocco": "0.0.3",
     "gulp-uglify": "^1.2.0",
     "gulp-webpack": "^1.5.0",
-    "imports-loader": "^0.6.4"
-  }
+    "imagemin-pngquant": "^4.1.2",
+    "imports-loader": "^0.6.4",
+    "generator-flocss": "https://github.com/rhythm191/generator-flocss.git"
+  },
+  "keywords": [
+    "html5"
+  ],
+  "license": "MIT",
 }

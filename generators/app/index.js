@@ -66,6 +66,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('scss-lint.yml'),
         this.destinationPath('scss-lint.yml')
       );
+      this.fs.copy(
+        this.templatePath('yo-rc.json'),
+        this.destinationPath('.yo-rc.json')
+      );
     },
 
     contentfiles: function() {
@@ -93,11 +97,11 @@ module.exports = yeoman.generators.Base.extend({
       );
       this.fs.copy(
         this.templatePath('assets/_custom-bootstrap-variables.scss'),
-        this.destinationPath('assets/scripts/_custom-bootstrap-variables.scss')
+        this.destinationPath('assets/styles/_custom-bootstrap-variables.scss')
       );
       this.fs.copy(
         this.templatePath('assets/main.scss'),
-        this.destinationPath('assets/scripts/main.scss')
+        this.destinationPath('assets/styles/main.scss')
       );
     }
   },

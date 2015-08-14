@@ -3,6 +3,7 @@ g = require 'gulp'
 $ = require('gulp-load-plugins')( camelize: true )
 p = require './package.json'
 browserSync = require 'browser-sync'
+pngquant = require 'imagemin-pngquant'
 
 jsbanner = """
 /**
@@ -116,6 +117,25 @@ g.task 'lint:scss', ->
     .pipe $.scssLint( config: 'scss-lint.yml' )
 
 
+# style guide
+g.task 'styledocco', ['styles:build'], ->
+  g.src [ 'assets/styles/**/*.scss', '!assets/styles/main.scss' ]
+    .pipe $.styledocco
+      include: ['public/styles/main.min.css']
+      preprocessor: 'sass'
+      'no-minify': true
+
+
+# images
+g.task 'image', ->
+  g.src 'assets/images/**/*'
+    .pipe $.imagemin
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()]
+    .pipe g.dest 'public/images'
+
+
 # copy files
 g.task 'copy', [
     'copy:icons'
@@ -146,4 +166,6 @@ g.task 'serve', ->
 
   g.watch 'assets/scripts/**/*.coffee', ['scripts']
 
-g.task 'build', ['clean', 'copy', 'scripts:build', 'styles:build']
+  g.watch 'assets/images/**/*', ['image']
+
+g.task 'build', ['clean', 'copy', 'scripts:build', 'styles:build', 'image']

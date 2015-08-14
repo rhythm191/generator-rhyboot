@@ -1,9 +1,9 @@
 {
   "name": "generator-rhyboot",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Yeoman generator",
   "license": "MIT",
-  "main": "app/index.js",
+  "main": "generators/app/index.js",
   "repository": "rhythm191/generator-rhyboot",
   "author": {
     "name": "rhythm191",
